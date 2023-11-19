@@ -1,12 +1,11 @@
 <resources>
-    <string name="app_name">OrderDrinkApp</string>
+    <string name="app_name">Quản lý nhà hàng</string>
     <string name="brand_name">:re Coffee Shop </string>
     <string name="slogan">Thơm ngon đến giọt cuối cùng</string>
     <string name="login">Đăng nhập</string>
     <string name="logintittle">Đăng <br /> nhập</string>
     <string name="register">Đăng ký</string>
     <string name="function">Quản lý</string>
-    <string name="howwork">Hướng dẫn sử dụng</string>
     <string name="create_acc">Tạo <br /> tài khoản</string>
     <string name="enter_fullname">Họ và tên</string>
     <string name="enter_username">Tên tài khoản</string>

@@ -13,20 +13,18 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.du_an_1.Activities.AddCategoryActivity;
+import com.example.du_an_1.Activities.HomeActivity;
+import com.example.du_an_1.Adapter.AdapterRecycleViewCategory;
+import com.example.du_an_1.Adapter.AdapterRecycleViewStatistic;
+import com.example.du_an_1.DAO.DonDatDAO;
 import com.example.du_an_1.DAO.LoaiMonDAO;
+
 import com.example.du_an_1.Model.DonDat;
 import com.example.du_an_1.Model.LoaiMon;
 import com.example.du_an_1.R;
 import com.google.android.material.navigation.NavigationView;
-import com.sinhvien.orderdrinkapp.Activities.AddCategoryActivity;
-import com.sinhvien.orderdrinkapp.Activities.HomeActivity;
-import com.sinhvien.orderdrinkapp.CustomAdapter.AdapterRecycleViewCategory;
-import com.sinhvien.orderdrinkapp.CustomAdapter.AdapterRecycleViewStatistic;
-import com.sinhvien.orderdrinkapp.DAO.DonDatDAO;
-import com.sinhvien.orderdrinkapp.DAO.LoaiMonDAO;
-import com.sinhvien.orderdrinkapp.DTO.DonDatDTO;
-import com.sinhvien.orderdrinkapp.DTO.LoaiMonDTO;
-import com.sinhvien.orderdrinkapp.R;
+
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

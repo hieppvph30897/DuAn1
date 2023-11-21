@@ -22,16 +22,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.du_an_1.Activities.AddCategoryActivity;
 import com.example.du_an_1.Activities.HomeActivity;
 import com.example.du_an_1.Adapter.AdapterDisplayCategory;
+import com.example.du_an_1.DAO.LoaiMonDAO;
 import com.example.du_an_1.Model.LoaiMon;
 import com.example.du_an_1.R;
-import com.sinhvien.orderdrinkapp.Activities.AddCategoryActivity;
-import com.sinhvien.orderdrinkapp.Activities.HomeActivity;
-import com.sinhvien.orderdrinkapp.CustomAdapter.AdapterDisplayCategory;
-import com.sinhvien.orderdrinkapp.DAO.LoaiMonDAO;
-import com.sinhvien.orderdrinkapp.DTO.LoaiMonDTO;
-import com.sinhvien.orderdrinkapp.R;
+
 
 import java.util.List;
 
@@ -39,7 +36,7 @@ public class DisplayCategoryFragment extends Fragment {
 
     GridView gvCategory;
     List<LoaiMon> loaiMonList;
-    LoaiMon loaiMonDAO;
+    LoaiMonDAO loaiMonDAO;
     AdapterDisplayCategory adapter;
     FragmentManager fragmentManager;
     int maban;

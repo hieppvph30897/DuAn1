@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.du_an_1.DAO.NhanVienDAO;
 import com.example.du_an_1.DAO.QuyenDAO;
-import com.example.du_an_1.DTO.NhanVienDTO;
+import com.example.du_an_1.Model.NhanVien;
 import com.example.du_an_1.R;
 
 
@@ -70,26 +70,26 @@ public class Register2ndActivity extends AppCompatActivity {
                         +"/"+DT_signup_NgaySinh.getYear();
 
                 //truyền dữ liệu vào obj nhanvienDTO
-                NhanVienDTO nhanVienDTO = new NhanVienDTO();
-                nhanVienDTO.setHOTENNV(hoTen);
-                nhanVienDTO.setTENDN(tenDN);
-                nhanVienDTO.setEMAIL(eMail);
-                nhanVienDTO.setSDT(sDT);
-                nhanVienDTO.setMATKHAU(matKhau);
-                nhanVienDTO.setGIOITINH(gioiTinh);
-                nhanVienDTO.setNGAYSINH(ngaySinh);
+                NhanVien nhanVien = new NhanVien();
+                nhanVien.setHOTENNV(hoTen);
+                nhanVien.setTENDN(tenDN);
+                nhanVien.setEMAIL(eMail);
+                nhanVien.setSDT(sDT);
+                nhanVien.setMATKHAU(matKhau);
+                nhanVien.setGIOITINH(gioiTinh);
+                nhanVien.setNGAYSINH(ngaySinh);
 
                 //nếu nhân viên đầu tiên đăng ký sẽ có quyền quản lý
                 if(!nhanVienDAO.KtraTonTaiNV()){
                     quyenDAO.ThemQuyen("Quản lý");
                     quyenDAO.ThemQuyen("Nhân viên");
-                    nhanVienDTO.setMAQUYEN(1);
+                    nhanVien.setMAQUYEN(1);
                 }else {
-                    nhanVienDTO.setMAQUYEN(2);
+                    nhanVien.setMAQUYEN(2);
                 }
 
                 //Thêm nv dựa theo obj nhanvienDTO
-                long ktra = nhanVienDAO.ThemNhanVien(nhanVienDTO);
+                long ktra = nhanVienDAO.ThemNhanVien(nhanVien);
                 if(ktra != 0){
                     Toast.makeText(Register2ndActivity.this,getResources().getString(R.string.add_sucessful),Toast.LENGTH_SHORT).show();
                     callLoginFromRegister();

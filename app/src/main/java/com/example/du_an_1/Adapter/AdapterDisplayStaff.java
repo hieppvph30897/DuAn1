@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.du_an_1.DAO.QuyenDAO;
-import com.example.du_an_1.DTO.NhanVienDTO;
+import com.example.du_an_1.Model.NhanVien;
 import com.example.du_an_1.R;
 
 
@@ -19,30 +19,30 @@ public class AdapterDisplayStaff extends BaseAdapter {
 
     Context context;
     int layout;
-    List<NhanVienDTO> nhanVienDTOS;
+    List<NhanVien> nhanViens;
     ViewHolder viewHolder;
     QuyenDAO quyenDAO;
 
-    public AdapterDisplayStaff(Context context, int layout, List<NhanVienDTO> nhanVienDTOS){
+    public AdapterDisplayStaff(Context context, int layout, List<NhanVien> nhanViens){
         this.context = context;
         this.layout = layout;
-        this.nhanVienDTOS = nhanVienDTOS;
+        this.nhanViens = nhanViens;
         quyenDAO = new QuyenDAO(context);
     }
 
     @Override
     public int getCount() {
-        return nhanVienDTOS.size();
+        return nhanViens.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return nhanVienDTOS.get(position);
+        return nhanViens.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return nhanVienDTOS.get(position).getMANV();
+        return nhanViens.get(position).getMANV();
     }
 
     @Override
@@ -63,12 +63,12 @@ public class AdapterDisplayStaff extends BaseAdapter {
         }else {
             viewHolder = (ViewHolder) view.getTag();
         }
-        NhanVienDTO nhanVienDTO = nhanVienDTOS.get(position);
+        NhanVien nhanVien = nhanViens.get(position);
 
-        viewHolder.txt_customstaff_TenNV.setText(nhanVienDTO.getHOTENNV());
-        viewHolder.txt_customstaff_TenQuyen.setText(quyenDAO.LayTenQuyenTheoMa(nhanVienDTO.getMAQUYEN()));
-        viewHolder.txt_customstaff_SDT.setText(nhanVienDTO.getSDT());
-        viewHolder.txt_customstaff_Email.setText(nhanVienDTO.getEMAIL());
+        viewHolder.txt_customstaff_TenNV.setText(nhanVien.getHOTENNV());
+        viewHolder.txt_customstaff_TenQuyen.setText(quyenDAO.LayTenQuyenTheoMa(nhanVien.getMAQUYEN()));
+        viewHolder.txt_customstaff_SDT.setText(nhanVien.getSDT());
+        viewHolder.txt_customstaff_Email.setText(nhanVien.getEMAIL());
 
         return view;
     }

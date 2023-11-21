@@ -16,6 +16,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.du_an_1.Fragment.DisplayHomeFragment;
 import com.example.du_an_1.R;
 import com.google.android.material.navigation.NavigationView;
 import com.example.du_an_1.Fragment.DisplayCategoryFragment;

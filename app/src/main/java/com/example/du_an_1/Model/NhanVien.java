@@ -1,6 +1,6 @@
-package com.example.du_an_1.DTO;
+package com.example.du_an_1.Model;
 
-public class NhanVienDTO {
+public class NhanVien {
 
     String HOTENNV,TENDN,MATKHAU,EMAIL,SDT,GIOITINH,NGAYSINH;
     int MANV,MAQUYEN;

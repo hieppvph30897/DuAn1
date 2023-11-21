@@ -1,6 +1,6 @@
-package com.example.du_an_1.DTO;
+package com.example.du_an_1.Model;
 
-public class LoaiMonDTO {
+public class LoaiMon {
 
     int MaLoai;
     String TenLoai;

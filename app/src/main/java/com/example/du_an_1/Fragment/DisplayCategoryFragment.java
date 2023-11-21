@@ -23,7 +23,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.du_an_1.Adapter.AdapterDisplayCategory;
-import com.example.du_an_1.DTO.LoaiMonDTO;
+import com.example.du_an_1.Model.LoaiMon;
 import com.example.du_an_1.R;
 import com.sinhvien.orderdrinkapp.Activities.AddCategoryActivity;
 import com.sinhvien.orderdrinkapp.Activities.HomeActivity;
@@ -37,8 +37,8 @@ import java.util.List;
 public class DisplayCategoryFragment extends Fragment {
 
     GridView gvCategory;
-    List<LoaiMonDTO> loaiMonDTOList;
-    LoaiMonDTO loaiMonDAO;
+    List<LoaiMon> loaiMonList;
+    LoaiMon loaiMonDAO;
     AdapterDisplayCategory adapter;
     FragmentManager fragmentManager;
     int maban;
@@ -95,8 +95,8 @@ public class DisplayCategoryFragment extends Fragment {
         gvCategory.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                int maloai = loaiMonDTOList.get(position).getMaLoai();
-                String tenloai = loaiMonDTOList.get(position).getTenLoai();
+                int maloai = loaiMonList.get(position).getMaLoai();
+                String tenloai = loaiMonList.get(position).getTenLoai();
                 DisplayMenuFragment displayMenuFragment = new DisplayMenuFragment();
                 Bundle bundle = new Bundle();
                 bundle.putInt("maloai",maloai);
@@ -128,7 +128,7 @@ public class DisplayCategoryFragment extends Fragment {
         int id = item.getItemId();
         AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         int vitri = menuInfo.position;
-        int maloai = loaiMonDTOList.get(vitri).getMaLoai();
+        int maloai = loaiMonList.get(vitri).getMaLoai();
 
         switch (id){
             case R.id.itEdit:
@@ -177,8 +177,8 @@ public class DisplayCategoryFragment extends Fragment {
 
     //hiển thị dữ liệu trên gridview
     private void HienThiDSLoai(){
-        loaiMonDTOList = loaiMonDAO.LayDSLoaiMon();
-        adapter = new AdapterDisplayCategory(getActivity(),R.layout.custom_layout_displaycategory,loaiMonDTOList);
+        loaiMonList = loaiMonDAO.LayDSLoaiMon();
+        adapter = new AdapterDisplayCategory(getActivity(),R.layout.custom_layout_displaycategory, loaiMonList);
         gvCategory.setAdapter(adapter);
         adapter.notifyDataSetChanged();
     }

@@ -10,7 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.du_an_1.DTO.LoaiMonDTO;
+import com.example.du_an_1.Model.LoaiMon;
 import com.example.du_an_1.R;
 
 
@@ -20,29 +20,29 @@ public class AdapterDisplayCategory extends BaseAdapter {
 
     Context context;
     int layout;
-    List<LoaiMonDTO> loaiMonDTOList ;
+    List<LoaiMon> loaiMonList;
     ViewHolder viewHolder;
 
     //constructor
-    public AdapterDisplayCategory(Context context, int layout, List<LoaiMonDTO> loaiMonDTOList){
+    public AdapterDisplayCategory(Context context, int layout, List<LoaiMon> loaiMonList){
         this.context = context;
         this.layout = layout;
-        this.loaiMonDTOList = loaiMonDTOList;
+        this.loaiMonList = loaiMonList;
     }
 
     @Override
     public int getCount() {
-        return loaiMonDTOList.size();
+        return loaiMonList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return loaiMonDTOList.get(position);
+        return loaiMonList.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return loaiMonDTOList.get(position).getMaLoai();
+        return loaiMonList.get(position).getMaLoai();
     }
 
     @Override
@@ -61,11 +61,11 @@ public class AdapterDisplayCategory extends BaseAdapter {
         }else {
             viewHolder = (ViewHolder) view.getTag();
         }
-        LoaiMonDTO loaiMonDTO = loaiMonDTOList.get(position);
+        LoaiMon loaiMon = loaiMonList.get(position);
 
-        viewHolder.txt_customcategory_TenLoai.setText(loaiMonDTO.getTenLoai());
+        viewHolder.txt_customcategory_TenLoai.setText(loaiMon.getTenLoai());
 
-        byte[] categoryimage = loaiMonDTO.getHinhAnh();
+        byte[] categoryimage = loaiMon.getHinhAnh();
         Bitmap bitmap = BitmapFactory.decodeByteArray(categoryimage,0,categoryimage.length);
         viewHolder.img_customcategory_HinhLoai.setImageBitmap(bitmap);
 

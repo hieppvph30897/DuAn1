@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Du_An_1" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
+    <style name="Theme.Du_An_1" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -19,5 +19,6 @@
         <item name="colorControlHighlight">@color/colorAccent</item>
     </style>
 
-    <style name="Theme.Du_An_1" parent="Theme.MaterialComponents.Light.Dialog" />
+    <style name="PopUpActivity" parent="Theme.MaterialComponents.Light.Dialog">
+    </style>
 </resources>

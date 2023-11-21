@@ -9,7 +9,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.du_an_1.DAO.NhanVienDAO;
+import com.example.du_an_1.DTO.DAO.NhanVienDAO;
 import com.example.du_an_1.R;
 import com.google.android.material.textfield.TextInputLayout;
 

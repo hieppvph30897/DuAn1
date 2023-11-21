@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.du_an_1.DAO.QuyenDAO;
+import com.example.du_an_1.DTO.DAO.QuyenDAO;
 import com.example.du_an_1.DTO.NhanVienDTO;
 import com.example.du_an_1.R;
 

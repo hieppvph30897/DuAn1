@@ -19,10 +19,11 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.du_an_1.DAO.LoaiMonDAO;
+import com.example.du_an_1.Model.LoaiMon;
+import com.example.du_an_1.R;
 import com.google.android.material.textfield.TextInputLayout;
-import com.sinhvien.orderdrinkapp.DAO.LoaiMonDAO;
-import com.sinhvien.orderdrinkapp.DTO.LoaiMonDTO;
-import com.sinhvien.orderdrinkapp.R;
+
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
@@ -78,12 +79,12 @@ public class AddCategoryActivity extends AppCompatActivity implements View.OnCli
         maloai = getIntent().getIntExtra("maloai",0);
         if(maloai != 0){
             TXT_addcategory_title.setText(getResources().getString(R.string.editcategory));
-            LoaiMonDTO loaiMonDTO = loaiMonDAO.LayLoaiMonTheoMa(maloai);
+            LoaiMon loaiMon = loaiMonDAO.LayLoaiMonTheoMa(maloai);
 
             //Hiển thị lại thông tin từ csdl
-            TXTL_addcategory_TenLoai.getEditText().setText(loaiMonDTO.getTenLoai());
+            TXTL_addcategory_TenLoai.getEditText().setText(loaiMon.getTenLoai());
 
-            byte[] categoryimage = loaiMonDTO.getHinhAnh();
+            byte[] categoryimage = loaiMon.getHinhAnh();
             Bitmap bitmap = BitmapFactory.decodeByteArray(categoryimage,0,categoryimage.length);
             IMG_addcategory_ThemHinh.setImageBitmap(bitmap);
 
@@ -120,14 +121,14 @@ public class AddCategoryActivity extends AppCompatActivity implements View.OnCli
                 }
 
                 String sTenLoai = TXTL_addcategory_TenLoai.getEditText().getText().toString();
-                LoaiMonDTO loaiMonDTO = new LoaiMonDTO();
-                loaiMonDTO.setTenLoai(sTenLoai);
-                loaiMonDTO.setHinhAnh(imageViewtoByte(IMG_addcategory_ThemHinh));
+                LoaiMon loaiMon = new LoaiMon();
+                loaiMon.setTenLoai(sTenLoai);
+                loaiMon.setHinhAnh(imageViewtoByte(IMG_addcategory_ThemHinh));
                 if(maloai != 0){
-                    ktra = loaiMonDAO.SuaLoaiMon(loaiMonDTO,maloai);
+                    ktra = loaiMonDAO.SuaLoaiMon(loaiMon,maloai);
                     chucnang = "sualoai";
                 }else {
-                    ktra = loaiMonDAO.ThemLoaiMon(loaiMonDTO);
+                    ktra = loaiMonDAO.ThemLoaiMon(loaiMon);
                     chucnang = "themloai";
                 }
 

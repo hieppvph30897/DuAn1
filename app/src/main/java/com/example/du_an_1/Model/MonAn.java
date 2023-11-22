@@ -1,6 +1,6 @@
 package com.example.du_an_1.Model;
 
-public class Mon {
+public class MonAn {
 
     int MaMon, MaLoai;
     String TenMon,GiaTien,TinhTrang;

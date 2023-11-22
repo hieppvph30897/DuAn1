@@ -17,14 +17,13 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.du_an_1.Fragment.DisplayHomeFragment;
+import com.example.du_an_1.Fragment.DisplayStaffFragment;
+import com.example.du_an_1.Fragment.DisplayStatisticFragment;
+import com.example.du_an_1.Fragment.DisplayTableFragment;
 import com.example.du_an_1.R;
 import com.google.android.material.navigation.NavigationView;
 import com.example.du_an_1.Fragment.DisplayCategoryFragment;
-import com.sinhvien.orderdrinkapp.Fragments.DisplayHomeFragment;
-import com.sinhvien.orderdrinkapp.Fragments.DisplayStaffFragment;
-import com.sinhvien.orderdrinkapp.Fragments.DisplayStatisticFragment;
-import com.sinhvien.orderdrinkapp.Fragments.DisplayTableFragment;
-import com.sinhvien.orderdrinkapp.R;
+
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     MenuItem selectedFeature, selectedManager;

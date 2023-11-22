@@ -139,37 +139,37 @@
                         />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginRight="5dp"
-                    >
-                    <RelativeLayout
-                        android:id="@+id/layout_displayhome_XemNV"
-                        android:layout_width="65dp"
-                        android:layout_height="65dp"
-                        android:elevation="8dp"
-                        android:layout_margin="10dp"
-                        android:background="@color/colorPrimary"
-                        >
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:layout_marginRight="5dp"-->
+<!--                    >-->
+<!--                    <RelativeLayout-->
+<!--                        android:id="@+id/layout_displayhome_XemNV"-->
+<!--                        android:layout_width="65dp"-->
+<!--                        android:layout_height="65dp"-->
+<!--                        android:elevation="8dp"-->
+<!--                        android:layout_margin="10dp"-->
+<!--                        android:background="@color/colorPrimary"-->
+<!--                        >-->
 
-                        <ImageView
-                            android:layout_width="200dp"
-                            android:layout_height="200dp"
-                            android:layout_centerInParent="true"
-                            android:src="@drawable/us" />
-                    </RelativeLayout>
-                    <TextView
-                        android:layout_width="65dp"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:gravity="center_horizontal"
-                        android:text="Thông tin nhân viên"
-                        android:textColor="@color/black"
-                        android:layout_margin="10dp"
-                        />
-                </LinearLayout>
+<!--                        <ImageView-->
+<!--                            android:layout_width="200dp"-->
+<!--                            android:layout_height="200dp"-->
+<!--                            android:layout_centerInParent="true"-->
+<!--                            android:src="@drawable/us" />-->
+<!--                    </RelativeLayout>-->
+<!--                    <TextView-->
+<!--                        android:layout_width="65dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textAlignment="center"-->
+<!--                        android:gravity="center_horizontal"-->
+<!--                        android:text="Thông tin nhân viên"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:layout_margin="10dp"-->
+<!--                        />-->
+<!--                </LinearLayout>-->
 
 
             </LinearLayout>

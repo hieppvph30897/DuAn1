@@ -16,9 +16,12 @@ import androidx.fragment.app.FragmentTransaction;
 
 
 import com.example.du_an_1.Activities.HomeActivity;
+import com.example.du_an_1.Activities.PaymentActivity;
 import com.example.du_an_1.DAO.BanAnDAO;
 import com.example.du_an_1.DAO.DonDatDAO;
+import com.example.du_an_1.Fragment.DisplayCategoryFragment;
 import com.example.du_an_1.Model.BanAn;
+import com.example.du_an_1.Model.DonDat;
 import com.example.du_an_1.R;
 
 import java.text.SimpleDateFormat;
@@ -137,14 +140,14 @@ public class AdapterDisplayTable extends BaseAdapter implements View.OnClickList
 
                 if(tinhtrang.equals("false")){
                     //Thêm bảng gọi món và update tình trạng bàn
-                    DonDatDTO donDatDTO = new DonDatDTO();
-                    donDatDTO.setMaBan(maban);
-                    donDatDTO.setMaNV(manv);
-                    donDatDTO.setNgayDat(ngaydat);
-                    donDatDTO.setTinhTrang("false");
-                    donDatDTO.setTongTien("0");
+                    DonDat donDat = new DonDat();
+                    donDat.setMaBan(maban);
+                    donDat.setMaNV(manv);
+                    donDat.setNgayDat(ngaydat);
+                    donDat.setTinhTrang("false");
+                    donDat.setTongTien("0");
 
-                    long ktra = donDatDAO.ThemDonDat(donDatDTO);
+                    long ktra = donDatDAO.ThemDonDat(donDat);
                     banAnDAO.CapNhatTinhTrangBan(maban,"true");
                     if(ktra == 0){ Toast.makeText(context,context.getResources().getString(R.string.add_failed),Toast.LENGTH_SHORT).show(); }
                 }

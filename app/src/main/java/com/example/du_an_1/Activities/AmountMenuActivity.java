@@ -8,11 +8,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.du_an_1.DAO.ChiTietDonDatDAO;
+import com.example.du_an_1.DAO.DonDatDAO;
+import com.example.du_an_1.Model.ChiTietDonDat;
+import com.example.du_an_1.R;
 import com.google.android.material.textfield.TextInputLayout;
-import com.sinhvien.orderdrinkapp.DAO.ChiTietDonDatDAO;
-import com.sinhvien.orderdrinkapp.DAO.DonDatDAO;
-import com.sinhvien.orderdrinkapp.DTO.ChiTietDonDatDTO;
-import com.sinhvien.orderdrinkapp.R;
+
 
 public class AmountMenuActivity extends AppCompatActivity {
 
@@ -55,12 +56,12 @@ public class AmountMenuActivity extends AppCompatActivity {
                     int sluongmoi = Integer.parseInt(TXTL_amountmenu_SoLuong.getEditText().getText().toString());
                     int tongsl = sluongcu + sluongmoi;
 
-                    ChiTietDonDatDTO chiTietDonDatDTO = new ChiTietDonDatDTO();
-                    chiTietDonDatDTO.setMaMon(mamon);
-                    chiTietDonDatDTO.setMaDonDat(madondat);
-                    chiTietDonDatDTO.setSoLuong(tongsl);
+                    ChiTietDonDat chiTietDonDat = new ChiTietDonDat();
+                    chiTietDonDat.setMaMon(mamon);
+                    chiTietDonDat.setMaDonDat(madondat);
+                    chiTietDonDat.setSoLuong(tongsl);
 
-                    boolean ktracapnhat = chiTietDonDatDAO.CapNhatSL(chiTietDonDatDTO);
+                    boolean ktracapnhat = chiTietDonDatDAO.CapNhatSL(chiTietDonDat);
                     if(ktracapnhat){
                         Toast.makeText(getApplicationContext(),getResources().getString(R.string.add_sucessful),Toast.LENGTH_SHORT).show();
                     }else {
@@ -69,7 +70,7 @@ public class AmountMenuActivity extends AppCompatActivity {
                 }else {
                     //thêm số lượng món nếu chưa chọn món này
                     int sluong = Integer.parseInt(TXTL_amountmenu_SoLuong.getEditText().getText().toString());
-                    ChiTietDonDatDTO chiTietDonDatDTO = new ChiTietDonDatDTO();
+                    ChiTietDonDat chiTietDonDatDTO = new ChiTietDonDat();
                     chiTietDonDatDTO.setMaMon(mamon);
                     chiTietDonDatDTO.setMaDonDat(madondat);
                     chiTietDonDatDTO.setSoLuong(sluong);

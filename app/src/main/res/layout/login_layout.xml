@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.LoginActivity"
-    android:background="#F3E784"
+    android:background="@color/colorPrimary"
     android:padding="30dp"
     android:transitionName="transition_login"
     android:id="@+id/layoutLogin">
@@ -135,7 +135,7 @@
             android:textColor="@color/white"
             android:layout_marginTop="20dp"
             android:onClick="callRegisterFromLogin"
-            android:background="@color/colorPrimary"
+            android:background="@color/black"
             />
 
     </LinearLayout>

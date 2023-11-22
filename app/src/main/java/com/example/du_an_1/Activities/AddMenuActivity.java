@@ -22,10 +22,10 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.du_an_1.DAO.MonDAO;
+import com.example.du_an_1.Model.MonAn;
+import com.example.du_an_1.R;
 import com.google.android.material.textfield.TextInputLayout;
-import com.sinhvien.orderdrinkapp.DAO.MonDAO;
-import com.sinhvien.orderdrinkapp.DTO.MonDTO;
-import com.sinhvien.orderdrinkapp.R;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
@@ -97,17 +97,17 @@ public class AddMenuActivity extends AppCompatActivity implements View.OnClickLi
         mamon = getIntent().getIntExtra("mamon",0);
         if(mamon != 0){
             TXT_addmenu_title.setText("Sửa thực đơn");
-            MonDTO monDTO = monDAO.LayMonTheoMa(mamon);
+            MonAn monAn = monDAO.LayMonTheoMa(mamon);
 
-            TXTL_addmenu_TenMon.getEditText().setText(monDTO.getTenMon());
-            TXTL_addmenu_GiaTien.getEditText().setText(monDTO.getGiaTien());
+            TXTL_addmenu_TenMon.getEditText().setText(monAn.getTenMon());
+            TXTL_addmenu_GiaTien.getEditText().setText(monAn.getGiaTien());
 
-            byte[] menuimage = monDTO.getHinhAnh();
+            byte[] menuimage = monAn.getHinhAnh();
             Bitmap bitmap = BitmapFactory.decodeByteArray(menuimage,0,menuimage.length);
             IMG_addmenu_ThemHinh.setImageBitmap(bitmap);
 
             layout_trangthaimon.setVisibility(View.VISIBLE);
-            String tinhtrang = monDTO.getTinhTrang();
+            String tinhtrang = monAn.getTinhTrang();
             if(tinhtrang.equals("true")){
                 RD_addmenu_ConMon.setChecked(true);
             }else {
@@ -155,17 +155,17 @@ public class AddMenuActivity extends AppCompatActivity implements View.OnClickLi
                     case R.id.rd_addmenu_HetMon: sTinhTrang = "false";  break;
                 }
 
-                MonDTO monDTO = new MonDTO();
-                monDTO.setMaLoai(maloai);
-                monDTO.setTenMon(sTenMon);
-                monDTO.setGiaTien(sGiaTien);
-                monDTO.setTinhTrang(sTinhTrang);
-                monDTO.setHinhAnh(imageViewtoByte(IMG_addmenu_ThemHinh));
+                MonAn monAn = new MonAn();
+                monAn.setMaLoai(maloai);
+                monAn.setTenMon(sTenMon);
+                monAn.setGiaTien(sGiaTien);
+                monAn.setTinhTrang(sTinhTrang);
+                monAn.setHinhAnh(imageViewtoByte(IMG_addmenu_ThemHinh));
                 if(mamon!= 0){
-                    ktra = monDAO.SuaMon(monDTO,mamon);
+                    ktra = monDAO.SuaMon(monAn,mamon);
                     chucnang = "suamon";
                 }else {
-                    ktra = monDAO.ThemMon(monDTO);
+                    ktra = monDAO.ThemMon(monAn);
                     chucnang = "themmon";
                 }
 

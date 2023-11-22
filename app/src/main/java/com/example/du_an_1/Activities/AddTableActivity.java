@@ -7,9 +7,10 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.du_an_1.DAO.BanAnDAO;
+import com.example.du_an_1.R;
 import com.google.android.material.textfield.TextInputLayout;
-import com.sinhvien.orderdrinkapp.DAO.BanAnDAO;
-import com.sinhvien.orderdrinkapp.R;
+
 
 public class AddTableActivity extends AppCompatActivity {
 

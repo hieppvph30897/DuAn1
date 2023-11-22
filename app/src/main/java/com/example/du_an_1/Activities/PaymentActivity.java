@@ -12,12 +12,13 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
-import com.sinhvien.orderdrinkapp.CustomAdapter.AdapterDisplayPayment;
-import com.sinhvien.orderdrinkapp.DAO.BanAnDAO;
-import com.sinhvien.orderdrinkapp.DAO.DonDatDAO;
-import com.sinhvien.orderdrinkapp.DAO.ThanhToanDAO;
-import com.sinhvien.orderdrinkapp.DTO.ThanhToanDTO;
-import com.sinhvien.orderdrinkapp.R;
+
+import com.example.du_an_1.Adapter.AdapterDisplayPayment;
+import com.example.du_an_1.DAO.BanAnDAO;
+import com.example.du_an_1.DAO.DonDatDAO;
+import com.example.du_an_1.DAO.ThanhToanDAO;
+import com.example.du_an_1.Model.ThanhToan;
+import com.example.du_an_1.R;
 
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
     DonDatDAO donDatDAO;
     BanAnDAO banAnDAO;
     ThanhToanDAO thanhToanDAO;
-    List<ThanhToanDTO> thanhToanDTOS;
+    List<ThanhToan> thanhToanDTOS;
     AdapterDisplayPayment adapterDisplayPayment;
     long tongtien = 0;
     int maban, madondat;

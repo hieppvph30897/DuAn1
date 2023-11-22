@@ -25,8 +25,9 @@ import androidx.fragment.app.FragmentManager;
 import com.example.du_an_1.Activities.AddMenuActivity;
 import com.example.du_an_1.Activities.AmountMenuActivity;
 import com.example.du_an_1.Activities.HomeActivity;
+import com.example.du_an_1.Adapter.AdapterDisplayMenu;
 import com.example.du_an_1.DAO.MonDAO;
-import com.example.du_an_1.Model.Mon;
+import com.example.du_an_1.Model.MonAn;
 import com.example.du_an_1.R;
 
 
@@ -38,7 +39,7 @@ public class DisplayMenuFragment extends Fragment {
     String tenloai,tinhtrang;
     GridView gvDisplayMenu;
     MonDAO monDAO;
-    List<Mon> monDTOList;
+    List<MonAn> monAnDTOList;
     AdapterDisplayMenu adapterDisplayMenu;
 
     ActivityResultLauncher<Intent> resultLauncherMenu = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
@@ -91,12 +92,12 @@ public class DisplayMenuFragment extends Fragment {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     //nếu lấy đc mã bàn mới mở
-                    tinhtrang = monDTOList.get(position).getTinhTrang();
+                    tinhtrang = monAnDTOList.get(position).getTinhTrang();
                     if(maban != 0){
                         if(tinhtrang.equals("true")){
                             Intent iAmount = new Intent(getActivity(), AmountMenuActivity.class);
                             iAmount.putExtra("maban",maban);
-                            iAmount.putExtra("mamon",monDTOList.get(position).getMaMon());
+                            iAmount.putExtra("mamon", monAnDTOList.get(position).getMaMon());
                             startActivity(iAmount);
                         }else {
                             Toast.makeText(getActivity(),"Món đã hết, không thể thêm", Toast.LENGTH_SHORT).show();
@@ -133,7 +134,7 @@ public class DisplayMenuFragment extends Fragment {
         int id = item.getItemId();
         AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         int vitri = menuInfo.position;
-        int mamon = monDTOList.get(vitri).getMaMon();
+        int mamon = monAnDTOList.get(vitri).getMaMon();
 
         switch (id){
             case R.id.itEdit:
@@ -181,8 +182,8 @@ public class DisplayMenuFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
     private void HienThiDSMon(){
-        monDTOList = monDAO.LayDSMonTheoLoai(maloai);
-        adapterDisplayMenu = new AdapterDisplayMenu(getActivity(),R.layout.custom_layout_displaymenu,monDTOList);
+        monAnDTOList = monDAO.LayDSMonTheoLoai(maloai);
+        adapterDisplayMenu = new AdapterDisplayMenu(getActivity(),R.layout.custom_layout_displaymenu, monAnDTOList);
         gvDisplayMenu.setAdapter(adapterDisplayMenu);
         adapterDisplayMenu.notifyDataSetChanged();
     }

@@ -13,10 +13,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.du_an_1.DAO.NhanVienDAO;
+import com.example.du_an_1.Model.NhanVien;
+import com.example.du_an_1.R;
 import com.google.android.material.textfield.TextInputLayout;
-import com.sinhvien.orderdrinkapp.DAO.NhanVienDAO;
-import com.sinhvien.orderdrinkapp.DTO.NhanVienDTO;
-import com.sinhvien.orderdrinkapp.R;
+
 
 import java.util.Calendar;
 import java.util.regex.Pattern;
@@ -73,17 +74,17 @@ public class AddStaffActivity extends AppCompatActivity implements View.OnClickL
         manv = getIntent().getIntExtra("manv",0);   //lấy manv từ display staff
         if(manv != 0){
             TXT_addstaff_title.setText("Sửa nhân viên");
-            NhanVienDTO nhanVienDTO = nhanVienDAO.LayNVTheoMa(manv);
+            NhanVien nhanVien = nhanVienDAO.LayNVTheoMa(manv);
 
             //Hiển thị thông tin từ csdl
-            TXTL_addstaff_HoVaTen.getEditText().setText(nhanVienDTO.getHOTENNV());
-            TXTL_addstaff_TenDN.getEditText().setText(nhanVienDTO.getTENDN());
-            TXTL_addstaff_Email.getEditText().setText(nhanVienDTO.getEMAIL());
-            TXTL_addstaff_SDT.getEditText().setText(nhanVienDTO.getSDT());
-            TXTL_addstaff_MatKhau.getEditText().setText(nhanVienDTO.getMATKHAU());
+            TXTL_addstaff_HoVaTen.getEditText().setText(nhanVien.getHOTENNV());
+            TXTL_addstaff_TenDN.getEditText().setText(nhanVien.getTENDN());
+            TXTL_addstaff_Email.getEditText().setText(nhanVien.getEMAIL());
+            TXTL_addstaff_SDT.getEditText().setText(nhanVien.getSDT());
+            TXTL_addstaff_MatKhau.getEditText().setText(nhanVien.getMATKHAU());
 
             //Hiển thị giới tính từ csdl
-            String gioitinh = nhanVienDTO.getGIOITINH();
+            String gioitinh = nhanVien.getGIOITINH();
             if(gioitinh.equals("Nam")){
                 RD_addstaff_Nam.setChecked(true);
             }else if (gioitinh.equals("Nữ")){
@@ -92,14 +93,14 @@ public class AddStaffActivity extends AppCompatActivity implements View.OnClickL
                 RD_addstaff_Khac.setChecked(true);
             }
 
-            if(nhanVienDTO.getMAQUYEN() == 1){
+            if(nhanVien.getMAQUYEN() == 1){
                 rd_addstaff_QuanLy.setChecked(true);
             }else {
                 rd_addstaff_NhanVien.setChecked(true);
             }
 
             //Hiển thị ngày sinh từ csdl
-            String date = nhanVienDTO.getNGAYSINH();
+            String date = nhanVien.getNGAYSINH();
             String[] items = date.split("/");
             int day = Integer.parseInt(items[0]);
             int month = Integer.parseInt(items[1]) - 1;
@@ -144,21 +145,21 @@ public class AddStaffActivity extends AppCompatActivity implements View.OnClickL
                         +"/"+DT_addstaff_NgaySinh.getYear();
 
                 //truyền dữ liệu vào obj nhanvienDTO
-                NhanVienDTO nhanVienDTO = new NhanVienDTO();
-                nhanVienDTO.setHOTENNV(hoTen);
-                nhanVienDTO.setTENDN(tenDN);
-                nhanVienDTO.setEMAIL(eMail);
-                nhanVienDTO.setSDT(sDT);
-                nhanVienDTO.setMATKHAU(matKhau);
-                nhanVienDTO.setGIOITINH(gioiTinh);
-                nhanVienDTO.setNGAYSINH(ngaySinh);
-                nhanVienDTO.setMAQUYEN(quyen);
+                NhanVien nhanVien = new NhanVien();
+                nhanVien.setHOTENNV(hoTen);
+                nhanVien.setTENDN(tenDN);
+                nhanVien.setEMAIL(eMail);
+                nhanVien.setSDT(sDT);
+                nhanVien.setMATKHAU(matKhau);
+                nhanVien.setGIOITINH(gioiTinh);
+                nhanVien.setNGAYSINH(ngaySinh);
+                nhanVien.setMAQUYEN(quyen);
 
                 if(manv != 0){
-                    ktra = nhanVienDAO.SuaNhanVien(nhanVienDTO,manv);
+                    ktra = nhanVienDAO.SuaNhanVien(nhanVien,manv);
                     chucnang = "sua";
                 }else {
-                    ktra = nhanVienDAO.ThemNhanVien(nhanVienDTO);
+                    ktra = nhanVienDAO.ThemNhanVien(nhanVien);
                     chucnang = "themnv";
                 }
                 //Thêm, sửa nv dựa theo obj nhanvienDTO

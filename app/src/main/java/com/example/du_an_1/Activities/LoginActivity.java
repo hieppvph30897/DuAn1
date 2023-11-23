@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +21,7 @@ import com.google.android.material.textfield.TextInputLayout;
 public class LoginActivity extends AppCompatActivity {
     Button BTN_login_DangNhap, BTN_login_DangKy;
     TextInputLayout TXTL_login_TenDN, TXTL_login_MatKhau;
+
     NhanVienDAO nhanVienDAO;
 
     @Override
@@ -32,6 +34,9 @@ public class LoginActivity extends AppCompatActivity {
         TXTL_login_MatKhau = (TextInputLayout)findViewById(R.id.txtl_login_MatKhau);
         BTN_login_DangNhap = (Button)findViewById(R.id.btn_login_DangNhap);
         BTN_login_DangKy = (Button)findViewById(R.id.btn_login_DangKy);
+
+
+
 
         nhanVienDAO = new NhanVienDAO(this);    //khởi tạo kết nối csdl
 

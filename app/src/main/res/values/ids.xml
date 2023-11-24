@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="layout_displayhome_XemNV" type="id" />
+    <item name="txt_displayhome_ViewAllStatistic" type="id" />
+    <item name="rcv_displayhome_DonTrongNgay" type="id" />
+</resources>

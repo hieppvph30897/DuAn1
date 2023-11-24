@@ -99,12 +99,17 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
             case R.id.nav_statistic:
                 //hiển thị tương ứng trên navigation
-                FragmentTransaction tranDisplayStatistic = fragmentManager.beginTransaction();
-                DisplayStatisticFragment displayStatisticFragment = new DisplayStatisticFragment();
-                tranDisplayStatistic.replace(R.id.contentView,displayStatisticFragment);
-                tranDisplayStatistic.commit();
-                navigationView.setCheckedItem(item.getItemId());
-                drawerLayout.closeDrawers();
+                if (maquyen == 1) {
+                    FragmentTransaction tranDisplayStatistic = fragmentManager.beginTransaction();
+                    DisplayStatisticFragment displayStatisticFragment = new DisplayStatisticFragment();
+                    tranDisplayStatistic.replace(R.id.contentView,displayStatisticFragment);
+                    tranDisplayStatistic.commit();
+                    navigationView.setCheckedItem(item.getItemId());
+                    drawerLayout.closeDrawers();
+                }else {
+                    Toast.makeText(getApplicationContext(),"Bạn không có quyền truy cập!",Toast.LENGTH_SHORT).show();
+                }
+
                 break;
 
             case R.id.nav_table:
@@ -119,12 +124,16 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
             case R.id.nav_category:
                 //hiển thị tương ứng trên navigation
-                FragmentTransaction tranDisplayMenu = fragmentManager.beginTransaction();
-                DisplayCategoryFragment displayCategoryFragment = new DisplayCategoryFragment();
-                tranDisplayMenu.replace(R.id.contentView, displayCategoryFragment);
-                tranDisplayMenu.commit();
-                navigationView.setCheckedItem(item.getItemId());
-                drawerLayout.closeDrawers();
+                if (maquyen == 1) {
+                    FragmentTransaction tranDisplayMenu = fragmentManager.beginTransaction();
+                    DisplayCategoryFragment displayCategoryFragment = new DisplayCategoryFragment();
+                    tranDisplayMenu.replace(R.id.contentView, displayCategoryFragment);
+                    tranDisplayMenu.commit();
+                    navigationView.setCheckedItem(item.getItemId());
+                    drawerLayout.closeDrawers();
+                }else {
+                    Toast.makeText(this, "Bạn không có quyền truy cập!", Toast.LENGTH_SHORT).show();
+                }
 
                 break;
 
@@ -138,7 +147,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     navigationView.setCheckedItem(item.getItemId());
                     drawerLayout.closeDrawers();
                 }else {
-                    Toast.makeText(getApplicationContext(),"Bạn không có quyền truy cập",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Bạn không có quyền truy cập!",Toast.LENGTH_SHORT).show();
                 }
 
                 break;

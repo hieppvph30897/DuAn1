@@ -1,7 +1,9 @@
 package com.example.du_an_1.Fragment;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -40,6 +42,8 @@ public class DisplayCategoryFragment extends Fragment {
     AdapterDisplayCategory adapter;
     FragmentManager fragmentManager;
     int maban;
+    int maquyen = 0;
+    SharedPreferences sharedPreferences;
 
     ActivityResultLauncher<Intent> resultLauncherCategory = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
@@ -83,6 +87,8 @@ public class DisplayCategoryFragment extends Fragment {
         fragmentManager = getActivity().getSupportFragmentManager();
 
         loaiMonDAO = new LoaiMonDAO(getActivity());
+        sharedPreferences = getActivity().getSharedPreferences("luuquyen", Context.MODE_PRIVATE);
+        maquyen = sharedPreferences.getInt("maquyen",0);
         HienThiDSLoai();
 
         Bundle bDataCategory = getArguments();
@@ -166,8 +172,12 @@ public class DisplayCategoryFragment extends Fragment {
         int id = item.getItemId();
         switch (id){
             case R.id.itAddCategory:
-                Intent intent = new Intent(getActivity(), AddCategoryActivity.class);
-                resultLauncherCategory.launch(intent);
+                if (maquyen == 1) {
+                    Intent intent = new Intent(getActivity(), AddCategoryActivity.class);
+                    resultLauncherCategory.launch(intent);
+                }else {
+                    Toast.makeText(getActivity(),"Phải lên chức quản lý thì mới được sử dụng hoặc xem chức năng!",Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
         return super.onOptionsItemSelected(item);

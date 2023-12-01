@@ -34,8 +34,10 @@ public class EditTableActivity extends AppCompatActivity {
         BTN_edittable_SuaBan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!validateban()){
+                    return;
+                }
                 String tenban = TXTL_edittable_tenban.getEditText().getText().toString();
-
                 if(tenban != null || tenban.equals("")){
                     boolean ktra = banAnDAO.CapNhatTenBan(maban,tenban);
                     Intent intent = new Intent();
@@ -45,5 +47,17 @@ public class EditTableActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+    //validate dữ liệu
+    private boolean validateban(){
+        String val = TXTL_edittable_tenban.getEditText().getText().toString().trim();
+        if(val.isEmpty()){
+            TXTL_edittable_tenban.setError(getResources().getString(R.string.not_empty));
+            return false;
+        }else {
+            TXTL_edittable_tenban.setError(null);
+            TXTL_edittable_tenban.setErrorEnabled(false);
+            return true;
+        }
     }
 }

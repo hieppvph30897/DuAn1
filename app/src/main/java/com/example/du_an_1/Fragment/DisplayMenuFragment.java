@@ -1,7 +1,9 @@
 package com.example.du_an_1.Fragment;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.KeyEvent;
@@ -41,6 +43,8 @@ public class DisplayMenuFragment extends Fragment {
     MonDAO monDAO;
     List<MonAn> monAnDTOList;
     AdapterDisplayMenu adapterDisplayMenu;
+    int maquyen = 0;
+    SharedPreferences sharedPreferences;
 
     ActivityResultLauncher<Intent> resultLauncherMenu = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
@@ -80,6 +84,9 @@ public class DisplayMenuFragment extends Fragment {
         monDAO = new MonDAO(getActivity());
 
         gvDisplayMenu = (GridView)view.findViewById(R.id.gvDisplayMenu);
+
+        sharedPreferences = getActivity().getSharedPreferences("luuquyen", Context.MODE_PRIVATE);
+        maquyen = sharedPreferences.getInt("maquyen",0);
 
         Bundle bundle = getArguments();
         if(bundle !=null){
@@ -173,10 +180,14 @@ public class DisplayMenuFragment extends Fragment {
         int id = item.getItemId();
         switch (id){
             case R.id.itAddMenu:
-                Intent intent = new Intent(getActivity(), AddMenuActivity.class);
-                intent.putExtra("maLoai",maloai);
-                intent.putExtra("tenLoai",tenloai);
-                resultLauncherMenu.launch(intent);
+                if (maquyen == 1) {
+                    Intent intent = new Intent(getActivity(), AddMenuActivity.class);
+                    intent.putExtra("maLoai",maloai);
+                    intent.putExtra("tenLoai",tenloai);
+                    resultLauncherMenu.launch(intent);
+                }else {
+                    Toast.makeText(getActivity(),"Phải lên chức quản lý thì mới được sử dụng hoặc xem chức năng!",Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
         return super.onOptionsItemSelected(item);

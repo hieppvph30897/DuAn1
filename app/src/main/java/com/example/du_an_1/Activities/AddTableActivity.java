@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -31,6 +32,9 @@ public class AddTableActivity extends AppCompatActivity {
         BTN_addtable_TaoBan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!validateName()){
+                    return;
+                }
                 String sTenBanAn = TXTL_addtable_tenban.getEditText().getText().toString();
                 if(sTenBanAn != null || sTenBanAn.equals("")){
                     boolean ktra = banAnDAO.ThemBanAn(sTenBanAn);

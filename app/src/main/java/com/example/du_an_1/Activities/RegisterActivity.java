@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.du_an_1.Database.CreateDatabase;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.regex.Pattern;
@@ -22,7 +23,11 @@ public class RegisterActivity extends AppCompatActivity {
     ImageView IMG_signup_back;
     Button BTN_signup_next;
     TextView TXT_signup_title;
-    TextInputLayout TXTL_signup_HoVaTen, TXTL_signup_TenDN, TXTL_signup_Email, TXTL_signup_SDT, TXTL_signup_MatKhau;
+    TextInputLayout TXTL_signup_HoVaTen;
+    TextInputLayout TXTL_signup_TenDN;
+    TextInputLayout TXTL_signup_Email;
+    TextInputLayout TXTL_signup_SDT;
+    TextInputLayout TXTL_signup_MatKhau;
     public static final String BUNDLE = "BUNDLE";
     private static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^" +
@@ -46,6 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
         TXTL_signup_SDT = (TextInputLayout)findViewById(id.txtl_signup_SDT);
         TXTL_signup_MatKhau = (TextInputLayout)findViewById(id.txtl_signup_MatKhau);
         //endregion
+
 
         BTN_signup_next.setOnClickListener(new View.OnClickListener() {
             @Override

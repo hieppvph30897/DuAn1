@@ -1,8 +1,12 @@
 package com.example.du_an_1.Database;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.google.android.material.textfield.TextInputLayout;
 
 public class CreateDatabase extends SQLiteOpenHelper {
 
@@ -104,11 +108,12 @@ public class CreateDatabase extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
     }
 
     //mở kết nối csdl
     public SQLiteDatabase open(){
+
         return this.getWritableDatabase();
     }
 }
+

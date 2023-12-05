@@ -66,20 +66,18 @@
 
             />
 
-        <Button
-            android:id="@+id/btn_signup"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:background="@color/colorPrimary"
-            android:text="@string/register"
-            android:textColor="@color/black"
-            app:backgroundTint="@color/colorPrimary"
-            android:onClick="callSignUpFromWel"
-            android:transitionName="transition_signup"/>
+<!--        <Button-->
+<!--            android:id="@+id/btn_signup"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@color/colorPrimary"-->
+<!--            android:text="@string/register"-->
+<!--            android:textColor="@color/black"-->
+<!--            app:backgroundTint="@color/colorPrimary"-->
+<!--            android:onClick="callSignUpFromWel"-->
+<!--            android:transitionName="transition_signup"/>-->
 
     </LinearLayout>
-
-
 </LinearLayout>

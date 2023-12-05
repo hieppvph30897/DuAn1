@@ -36,7 +36,7 @@
                 android:text="@string/create_acc"
                 android:textAllCaps="true"
                 android:textColor="@color/black"
-                android:textSize="40sp" />
+                android:textSize="30sp" />
 
             <TextView
                 android:id="@+id/txt_signup2nd_text"

@@ -19,7 +19,7 @@ import com.example.du_an_1.R;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class LoginActivity extends AppCompatActivity {
-    Button BTN_login_DangNhap, BTN_login_DangKy;
+    Button BTN_login_DangNhap;
     TextInputLayout TXTL_login_TenDN, TXTL_login_MatKhau;
     NhanVienDAO nhanVienDAO;
 
@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         TXTL_login_TenDN = (TextInputLayout)findViewById(R.id.txtl_login_TenDN);
         TXTL_login_MatKhau = (TextInputLayout)findViewById(R.id.txtl_login_MatKhau);
         BTN_login_DangNhap = (Button)findViewById(R.id.btn_login_DangNhap);
-        BTN_login_DangKy = (Button)findViewById(R.id.btn_login_DangKy);
+//        BTN_login_DangKy = (Button)findViewById(R.id.btn_login_DangKy);
 
 
 

@@ -79,12 +79,12 @@ public class AddCategoryActivity extends AppCompatActivity implements View.OnCli
         maloai = getIntent().getIntExtra("maloai",0);
         if(maloai != 0){
             TXT_addcategory_title.setText(getResources().getString(R.string.editcategory));
-            LoaiMon loaiMon = loaiMonDAO.LayLoaiMonTheoMa(maloai);
+            LoaiMon loaiMonDTO = loaiMonDAO.LayLoaiMonTheoMa(maloai);
 
             //Hiển thị lại thông tin từ csdl
-            TXTL_addcategory_TenLoai.getEditText().setText(loaiMon.getTenLoai());
+            TXTL_addcategory_TenLoai.getEditText().setText(loaiMonDTO.getTenLoai());
 
-            byte[] categoryimage = loaiMon.getHinhAnh();
+            byte[] categoryimage = loaiMonDTO.getHinhAnh();
             Bitmap bitmap = BitmapFactory.decodeByteArray(categoryimage,0,categoryimage.length);
             IMG_addcategory_ThemHinh.setImageBitmap(bitmap);
 
@@ -121,14 +121,14 @@ public class AddCategoryActivity extends AppCompatActivity implements View.OnCli
                 }
 
                 String sTenLoai = TXTL_addcategory_TenLoai.getEditText().getText().toString();
-                LoaiMon loaiMon = new LoaiMon();
-                loaiMon.setTenLoai(sTenLoai);
-                loaiMon.setHinhAnh(imageViewtoByte(IMG_addcategory_ThemHinh));
+                LoaiMon loaiMonDTO = new LoaiMon();
+                loaiMonDTO.setTenLoai(sTenLoai);
+                loaiMonDTO.setHinhAnh(imageViewtoByte(IMG_addcategory_ThemHinh));
                 if(maloai != 0){
-                    ktra = loaiMonDAO.SuaLoaiMon(loaiMon,maloai);
+                    ktra = loaiMonDAO.SuaLoaiMon(loaiMonDTO,maloai);
                     chucnang = "sualoai";
                 }else {
-                    ktra = loaiMonDAO.ThemLoaiMon(loaiMon);
+                    ktra = loaiMonDAO.ThemLoaiMon(loaiMonDTO);
                     chucnang = "themloai";
                 }
 

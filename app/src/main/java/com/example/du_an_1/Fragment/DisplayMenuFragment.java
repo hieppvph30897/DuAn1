@@ -145,22 +145,30 @@ public class DisplayMenuFragment extends Fragment {
 
         switch (id){
             case R.id.itEdit:
-                Intent iEdit = new Intent(getActivity(), AddMenuActivity.class);
-                iEdit.putExtra("mamon",mamon);
-                iEdit.putExtra("maLoai",maloai);
-                iEdit.putExtra("tenLoai",tenloai);
-                resultLauncherMenu.launch(iEdit);
+                if (maquyen == 1) {
+                    Intent iEdit = new Intent(getActivity(), AddMenuActivity.class);
+                    iEdit.putExtra("mamon",mamon);
+                    iEdit.putExtra("maLoai",maloai);
+                    iEdit.putExtra("tenLoai",tenloai);
+                    resultLauncherMenu.launch(iEdit);
+                }else {
+                    Toast.makeText(getActivity(),"Bạn không có quyền để dùng chức năng sửa!",Toast.LENGTH_SHORT).show();
+                }
                 break;
 
             case R.id.itDelete:
-                boolean ktra = monDAO.XoaMon(mamon);
-                if(ktra){
-                    HienThiDSMon();
-                    Toast.makeText(getActivity(),getActivity().getResources().getString(R.string.delete_sucessful)
-                            ,Toast.LENGTH_SHORT).show();
+                if (maquyen == 1) {
+                    boolean ktra = monDAO.XoaMon(mamon);
+                    if(ktra){
+                        HienThiDSMon();
+                        Toast.makeText(getActivity(),getActivity().getResources().getString(R.string.delete_sucessful)
+                                ,Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(getActivity(),getActivity().getResources().getString(R.string.delete_failed)
+                                ,Toast.LENGTH_SHORT).show();
+                    }
                 }else {
-                    Toast.makeText(getActivity(),getActivity().getResources().getString(R.string.delete_failed)
-                            ,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"Bạn không có quyền để dùng chức năng xoá!",Toast.LENGTH_SHORT).show();
                 }
                 break;
         }

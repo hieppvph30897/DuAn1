@@ -1,7 +1,9 @@
 package com.example.du_an_1.Fragment;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -37,6 +39,8 @@ public class DisplayTableFragment extends Fragment {
     List<BanAn> banAnDTOList;
     BanAnDAO banAnDAO;
     AdapterDisplayTable adapterDisplayTable;
+    int maquyen = 0;
+    SharedPreferences sharedPreferences;
 
     //Dùng activity result (activityforresult ko hổ trợ nữa) để nhận data gửi từ activity addtable
     ActivityResultLauncher<Intent> resultLauncherAdd = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
@@ -82,6 +86,9 @@ public class DisplayTableFragment extends Fragment {
         GVDisplayTable = (GridView)view.findViewById(R.id.gvDisplayTable);
         banAnDAO = new BanAnDAO(getActivity());
 
+        sharedPreferences = getActivity().getSharedPreferences("luuquyen", Context.MODE_PRIVATE);
+        maquyen = sharedPreferences.getInt("maquyen",0);
+
         HienThiDSBan();
 
         registerForContextMenu(GVDisplayTable);
@@ -104,18 +111,26 @@ public class DisplayTableFragment extends Fragment {
         int maban = banAnDTOList.get(vitri).getMaBan();
         switch(id){
             case R.id.itEdit:
-                Intent intent = new Intent(getActivity(), EditTableActivity.class);
-                intent.putExtra("maban",maban);
-                resultLauncherEdit.launch(intent);
+                if (maquyen == 1) {
+                    Intent intent = new Intent(getActivity(), EditTableActivity.class);
+                    intent.putExtra("maban",maban);
+                    resultLauncherEdit.launch(intent);
+                }else {
+                    Toast.makeText(getActivity(),"Bạn không có quyền để dùng chức năng sửa!",Toast.LENGTH_SHORT).show();
+                }
                 break;
 
             case R.id.itDelete:
-                boolean ktraxoa = banAnDAO.XoaBanTheoMa(maban);
-                if(ktraxoa){
-                    HienThiDSBan();
-                    Toast.makeText(getActivity(),getActivity().getResources().getString(R.string.delete_sucessful),Toast.LENGTH_SHORT).show();
+                if (maquyen == 1) {
+                    boolean ktraxoa = banAnDAO.XoaBanTheoMa(maban);
+                    if(ktraxoa){
+                        HienThiDSBan();
+                        Toast.makeText(getActivity(),getActivity().getResources().getString(R.string.delete_sucessful),Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(getActivity(),getActivity().getResources().getString(R.string.delete_failed),Toast.LENGTH_SHORT).show();
+                    }
                 }else {
-                    Toast.makeText(getActivity(),getActivity().getResources().getString(R.string.delete_failed),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"Bạn không có quyền để dùng chức năng xoá!",Toast.LENGTH_SHORT).show();
                 }
                 break;
         }
@@ -136,8 +151,12 @@ public class DisplayTableFragment extends Fragment {
         int id = item.getItemId();
         switch (id){
             case R.id.itAddTable:
-                Intent iAddTable = new Intent(getActivity(), AddTableActivity.class);
-                resultLauncherAdd.launch(iAddTable);
+                if (maquyen == 1) {
+                    Intent iAddTable = new Intent(getActivity(), AddTableActivity.class);
+                    resultLauncherAdd.launch(iAddTable);
+                }else {
+                    Toast.makeText(getActivity(),"Phải lên chức quản lý thì mới được sử dụng hoặc xem chức năng!",Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
 

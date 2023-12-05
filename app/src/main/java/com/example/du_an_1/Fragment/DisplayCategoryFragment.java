@@ -136,20 +136,28 @@ public class DisplayCategoryFragment extends Fragment {
 
         switch (id){
             case R.id.itEdit:
-                Intent iEdit = new Intent(getActivity(), AddCategoryActivity.class);
-                iEdit.putExtra("maloai",maloai);
-                resultLauncherCategory.launch(iEdit);
+                if (maquyen == 1) {
+                    Intent iEdit = new Intent(getActivity(), AddCategoryActivity.class);
+                    iEdit.putExtra("maloai",maloai);
+                    resultLauncherCategory.launch(iEdit);
+                }else {
+                    Toast.makeText(getActivity(),"Bạn không có quyền để dùng chức năng sửa!",Toast.LENGTH_SHORT).show();
+                }
                 break;
 
             case R.id.itDelete:
-                boolean ktra = loaiMonDAO.XoaLoaiMon(maloai);
-                if(ktra){
-                    HienThiDSLoai();
-                    Toast.makeText(getActivity(),getActivity().getResources().getString(R.string.delete_sucessful)
-                            ,Toast.LENGTH_SHORT).show();
+                if (maquyen == 1) {
+                    boolean ktra = loaiMonDAO.XoaLoaiMon(maloai);
+                    if(ktra){
+                        HienThiDSLoai();
+                        Toast.makeText(getActivity(),getActivity().getResources().getString(R.string.delete_sucessful)
+                                ,Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(getActivity(),getActivity().getResources().getString(R.string.delete_failed)
+                                ,Toast.LENGTH_SHORT).show();
+                    }
                 }else {
-                    Toast.makeText(getActivity(),getActivity().getResources().getString(R.string.delete_failed)
-                            ,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"Bạn không có quyền để dùng chức năng xoá!",Toast.LENGTH_SHORT).show();
                 }
                 break;
         }

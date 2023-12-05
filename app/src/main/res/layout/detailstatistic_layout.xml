@@ -114,7 +114,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txt_detailstatistic_TenBan"
                 android:textColor="@color/white"
-                android:text="Lê Gia Huy"
+                android:text="Phạm Văn Hiệp"
                 android:fontFamily="@font/muli_black"
                 android:textSize="22sp"
                 android:paddingBottom="5dp"

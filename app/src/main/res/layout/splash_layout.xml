@@ -10,7 +10,7 @@
 
     <ImageView
         android:id="@+id/imgLogo"
-        android:layout_width="408dp"
+        android:layout_width="535dp"
         android:layout_height="392dp"
         android:src="@drawable/que"
         android:layout_gravity="center|top"
